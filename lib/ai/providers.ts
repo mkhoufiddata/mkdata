@@ -40,8 +40,10 @@ export const openSourceProvider = customProvider({
     "gpt-3.5-turbo": {
       provider: "openrouter",
       modelId: "gpt-3.5-turbo",
-      baseUrl: "https://openrouter.ai/api/v1",
-      apiKey: "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",
+      providerOptions: {
+        baseUrl: "https://openrouter.ai/api/v1",
+        apiKey: process.env.OPENROUTER_API_KEY,
+      },
     },
   },
 });
