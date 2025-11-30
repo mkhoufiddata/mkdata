@@ -15,7 +15,6 @@ type SuggestedActionsProps = {
 
 function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
   const suggestedActions = [
-    // Suggestions supprimées selon la demande
   ];
 
   return (
