@@ -14,8 +14,7 @@ type SuggestedActionsProps = {
 };
 
 function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
-  const suggestedActions = [
-  ];
+  const suggestedActions: string[] = [];
 
   return (
     <div
