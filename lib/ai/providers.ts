@@ -2,7 +2,7 @@ import { gateway } from "@ai-sdk/gateway";
 import {
   customProvider,
   extractReasoningMiddleware,
-  wrapLanguageModel,
+  wrapLanguageModel
 } from "ai";
 import { isTestEnvironment } from "../constants";
 
@@ -34,3 +34,14 @@ export const myProvider = isTestEnvironment
         "artifact-model": gateway.languageModel("xai/grok-2-1212"),
       },
     });
+
+export const openSourceProvider = customProvider({
+  languageModels: {
+    "gpt-3.5-turbo": {
+      provider: "openrouter",
+      modelId: "gpt-3.5-turbo",
+      baseUrl: "https://openrouter.ai/api/v1",
+      apiKey: "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",
+    },
+  },
+});
