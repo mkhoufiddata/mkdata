@@ -21,7 +21,7 @@ import type { VisibilityType } from "@/components/visibility-selector";
 import { entitlementsByUserType } from "@/lib/ai/entitlements";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
-import { myProvider } from "@/lib/ai/providers";
+import { myProvider, openSourceProvider } from "@/lib/ai/providers";
 import { createDocument } from "@/lib/ai/tools/create-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
@@ -180,7 +180,7 @@ export async function POST(request: Request) {
     const stream = createUIMessageStream({
       execute: ({ writer: dataStream }) => {
         const result = streamText({
-          model: myProvider.languageModel(selectedChatModel),
+          model: openSourceProvider.languageModel("gpt-3.5-turbo"), // Utilise un LLM gratuit
           system: systemPrompt({ selectedChatModel, requestHints }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
